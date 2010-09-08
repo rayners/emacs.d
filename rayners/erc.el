@@ -37,3 +37,7 @@
 ;		      )))
 ;		       ("nick-two" . "password")))
 ;	(DALnet       (("nickname" . "password")))))
+
+;; we don't need *everything* to trigger a "something new in this channel" alert
+(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                    "324" "329" "332" "333" "353" "477"))
