@@ -1,4 +1,16 @@
 
+;; make sure to load the needed libraries
+
+;(vendor 'apel)
+;(vendor 'semi)
+;(vendor 'emu) ;; this one too?
+;(vendor 'flim)
+
+(add-to-list 'load-path "~/.emacs.d/vendor/apel")
+(add-to-list 'load-path "~/.emacs.d/vendor/emu")
+(add-to-list 'load-path "~/.emacs.d/vendor/flim")
+(add-to-list 'load-path "~/.emacs.d/vendor/semi")
+
 ;; Wanderlust settings
 
 (autoload 'wl "wl" "Wanderlust" t)
