@@ -22,3 +22,4 @@
 
 ;; vendor libs/modes
 (vendor 'org)
+(vendor 'gist)
