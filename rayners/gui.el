@@ -11,3 +11,6 @@
                 '(progn
                 (color-theme-initialize)
                 (color-theme-zenburn)))
+
+;; use that fancy font I downloaded
+(set-face-font 'default "-apple-DejaVu_Sans_Mono-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1")

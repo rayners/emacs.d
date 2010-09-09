@@ -12,5 +12,9 @@
 (load "rayners/gui")
 
 ;; Mode setups
+(load "rayners/modes")
+
+;; specific modes
 (load "rayners/erc")
 (load "rayners/org")
+(load "rayners/perl")
