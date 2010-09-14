@@ -41,3 +41,8 @@
 ;; we don't need *everything* to trigger a "something new in this channel" alert
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                     "324" "329" "332" "333" "353" "477"))
+
+;; rcirc bits, in case I decide to permanently switch
+(setq rcirc-default-nick "rayners")
+(setq rcirc-default-user-name "rayners")
+(setq rcirc-default-full-name "David Raynes")
