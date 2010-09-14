@@ -12,7 +12,7 @@
 (load "rayners/modes")
 
 ;; specific modes
-(load "rayners/erc")
+(load "rayners/irc")
 (load "rayners/org")
 (load "rayners/perl")
 (load "rayners/wl")
