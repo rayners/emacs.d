@@ -21,3 +21,4 @@
 (vendor 'org)
 (vendor 'gist)
 (vendor 'wl)
+(vendor 'growl)
