@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
 (load "rayners/private")
+(load "rayners/paths")
 (load "rayners/defuns")
 
 ; buffer handling
@@ -25,5 +26,3 @@
 (vendor 'gist)
 (vendor 'wl)
 (vendor 'growl)
-
-(setq growl-program "/usr/local/bin/growlnotify") ; why isn't it finding this?
