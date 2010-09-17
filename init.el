@@ -5,6 +5,9 @@
 (load "rayners/private")
 (load "rayners/defuns")
 
+; buffer handling
+(load "rayners/buffers")
+
 ; load the gui bits
 (load "rayners/gui")
 
