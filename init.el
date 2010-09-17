@@ -22,3 +22,5 @@
 (vendor 'gist)
 (vendor 'wl)
 (vendor 'growl)
+
+(setq growl-program "/usr/local/bin/growlnotify") ; why isn't it finding this?

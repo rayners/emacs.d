@@ -38,7 +38,7 @@
 (defun growl-rcirc-print-hook (process sender response target text)
   (when (and (string-match (rcirc-nick process) text)
              (not (string= (rcirc-nick process) sender))
-             (not (string= (rcirc-server process) sender)))
+             (not (string= (rcirc-server-name process) sender)))
     (growl "You Were Mentioned"
            (format "You were mentioned by %s in %s" sender target))))
 
