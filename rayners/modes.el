@@ -9,3 +9,6 @@
 (add-to-list 'auto-mode-alist '("\\.tmpl$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.mtml$" . html-mode))
 
+;; yaml files
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+

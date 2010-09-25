@@ -26,3 +26,4 @@
 (vendor 'gist)
 (vendor 'wl)
 (vendor 'growl)
+(vendor 'yaml-mode)
