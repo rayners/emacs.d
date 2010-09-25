@@ -27,3 +27,4 @@
 (vendor 'wl)
 (vendor 'growl)
 (vendor 'yaml-mode)
+(vendor 'magit)
