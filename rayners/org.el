@@ -12,5 +12,7 @@
 (setq rayners/private-org-files 
       (file-expand-wildcards "~/Dropbox/org/*.org"))
 
+;; build the list from the shared and private files
 (setq org-agenda-files 
       (append rayners/shared-org-files rayners/private-org-files))
+
