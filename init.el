@@ -9,6 +9,9 @@
 ; buffer handling
 (load "rayners/buffers")
 
+; files
+(load "rayners/files")
+
 ; load the gui bits
 (load "rayners/gui")
 
