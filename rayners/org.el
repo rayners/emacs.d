@@ -23,3 +23,26 @@
 
 ;; be a little paranoid about saving org-mode buffers
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+;; swiped, then edited from http://doc.norang.ca/org-mode.html
+(setq org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+ (sequence "WAITING(w@/!)" "SOMEDAY(s!)" "|" "CANCELLED(c@/!)")
+ (sequence "OPEN(O)" "|" "CLOSED(C)"))))
+
+(setq org-todo-keyword-faces (quote (("TODO" :foreground "red" :weight bold)
+ ("NEXT" :foreground "blue" :weight bold)
+ ("DONE" :foreground "forest green" :weight bold)
+ ("WAITING" :foreground "yellow" :weight bold)
+ ("SOMEDAY" :foreground "goldenrod" :weight bold)
+ ("CANCELLED" :foreground "orangered" :weight bold)
+ ("OPEN" :foreground "magenta" :weight bold)
+ ("CLOSED" :foreground "forest green" :weight bold))))
+
+;; mobile settings
+;; for mobileorg
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Dropbox/org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
