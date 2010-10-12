@@ -1,6 +1,11 @@
 
 ;; org-mode fanciness
 
+; key bindings
+(global-set-key (kbd "C-c a") 'org-agenda)      ;; Agenda
+(global-set-key (kbd "C-c b") 'org-iswitchb)    ;; switch
+(global-set-key (kbd "C-c r") 'org-capture)     ;; capture
+
 ; round clock times to 15m increments
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
