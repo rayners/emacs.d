@@ -6,4 +6,4 @@
 	url = git://github.com/yoshiki/yaml-mode.git
 [submodule "vendor/magit"]
 	path = vendor/magit
-	url = git://github.com/philjackson/magit.git
+	url = git://github.com/rayners/magit.git
