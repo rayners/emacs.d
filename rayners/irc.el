@@ -9,7 +9,7 @@
 
 (setq rayners/which-irc 'rcirc)
 (setq rayners/freenode-channels 
-      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk"))
+      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" "#openmelody"))
 (cond ((eq rayners/which-irc 'rcirc)
        (add-to-list 'rayners/freenode-channels "#rcirc"))
       ((eq rayners/which-irc 'erc)
