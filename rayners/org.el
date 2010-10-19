@@ -19,7 +19,8 @@
 
 ;; build the list from the shared and private files
 (setq org-agenda-files 
-      (append rayners/shared-org-files rayners/private-org-files))
+;      (append rayners/shared-org-files rayners/private-org-files))
+      rayners/private-org-files)
 
 ;; be a little paranoid about saving org-mode buffers
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
@@ -46,3 +47,28 @@
 (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
+
+;; capture bits
+
+(setq org-default-notes-file "~/Dropbox/org/notes.org")
+(setq org-capture-templates
+      '(("t" "Todo" entry (file "")
+	 "* TODO %?\n  %i\n  %a")
+	("p" "Phone call" entry (file "")
+	 "* TODO %? :PHONE:\n  %i\n  %a")
+	))
+
+(setq org-tag-alist '(("PHONE" . ?P) 
+		      ("REFILE" . ?R)))
+(setq org-tag-faces '(("PHONE" :foreground "green" :weight bold)
+		      ("REFILE" :foreground "red" :weight bold)))
+
+(setq org-agenda-custom-commands
+      '(
+	("p" "Phone Calls" tags-todo "PHONE"
+	 ((org-agenda-overriding-header "Phone Calls"))
+	 )
+	("r" "Items to refile" tags "REFILE"
+	 ((org-agenda-overriding-header "Items to Refile"))
+	 )
+	))
