@@ -71,6 +71,12 @@
 	("r" "Items to refile" tags "REFILE"
 	 ((org-agenda-overriding-header "Items to Refile"))
 	 )
+	("G" "Geektool agenda"
+	 ((agenda "")
+	  (alltodo))
+	 ((org-agenda-ndays 1)
+	  (org-deadline-warning-days 7))
+	 ("~/agenda.txt"))
 	))
 
 ;; Remove completed deadline tasks from the agenda view
