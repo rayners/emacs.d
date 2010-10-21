@@ -98,3 +98,6 @@
 	(nil :maxlevel . 5)))            ;; as well as stuff from current buffer
 
 (setq org-refile-use-outline-path 'file)
+
+;; update appt each time agenda opened
+(add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)

@@ -20,6 +20,7 @@
 
 ;; specific modes
 (load "rayners/irc")
+(load "rayners/appt")
 (load "rayners/org")
 (load "rayners/perl")
 (load "rayners/wl")
