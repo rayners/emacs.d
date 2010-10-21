@@ -68,7 +68,7 @@
 	("p" "Phone Calls" tags-todo "PHONE"
 	 ((org-agenda-overriding-header "Phone Calls"))
 	 )
-	("r" "Items to refile" tags "REFILE"
+	("r" "Items to refile" tags "REFILE" ;; tags means include done items
 	 ((org-agenda-overriding-header "Items to Refile"))
 	 )
 	("G" "Geektool agenda"
@@ -87,3 +87,14 @@
 
 ;; Remove completed items from search results
 (setq org-agenda-skip-timestamp-if-done t)
+
+;; Diary bits
+(setq org-agenda-include-diary nil)
+(setq org-agenda-diary-file "~/Dropbox/org/diary.org")
+
+;; refile-y bits
+(setq org-refile-targets 
+      '((org-agenda-files :maxlevel . 5) ;; use the files from the agenda list
+	(nil :maxlevel . 5)))            ;; as well as stuff from current buffer
+
+(setq org-refile-use-outline-path 'file)
