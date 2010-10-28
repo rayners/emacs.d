@@ -56,12 +56,16 @@
 	 "* TODO %?\n  %i\n  %a")
 	("p" "Phone call" entry (file "")
 	 "* TODO %? :PHONE:\n  %i\n  %a")
+	("a" "Appointment" entry (file "")
+	 "* %? %^t")
 	))
 
 (setq org-tag-alist '(("PHONE" . ?P) 
-		      ("REFILE" . ?R)))
-(setq org-tag-faces '(("PHONE" :foreground "green" :weight bold)
-		      ("REFILE" :foreground "red" :weight bold)))
+		      ("REFILE" . ?R)
+		      ("GROCERIES" . ?G)))
+(setq org-tag-faces '(("PHONE" :foreground "blue" :weight bold)
+		      ("REFILE" :foreground "red" :weight bold)
+		      ("GROCERIES" :foreground "green" :weight bold)))
 
 (setq org-agenda-custom-commands
       '(
@@ -71,10 +75,13 @@
 	("r" "Items to refile" tags "REFILE" ;; tags means include done items
 	 ((org-agenda-overriding-header "Items to Refile"))
 	 )
+	("g" "Grocery list" tags-todo "GROCERIES"
+	 ((org-agenda-overriding-header "Grocery List"))
+	 )
 	("G" "Geektool agenda"
 	 ((agenda "")
 	  (alltodo))
-	 ((org-agenda-ndays 1)
+	 ((org-agenda-ndays 2)
 	  (org-deadline-warning-days 7))
 	 ("~/agenda.txt"))
 	))
