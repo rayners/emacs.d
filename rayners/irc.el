@@ -7,7 +7,8 @@
 ; plus I might not be back on the VPN
 (setq erc-server-auto-reconnect nil)
 
-(setq rayners/which-irc 'rcirc)
+;(setq rayners/which-irc 'rcirc)
+(setq rayners/which-irc 'erc)
 (setq rayners/freenode-channels 
       '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" "#openmelody"))
 (cond ((eq rayners/which-irc 'rcirc)
@@ -20,9 +21,12 @@
 ; channels should be all setup now
 ; erc needs the channels set, by server, it erc-autojoin-channels-alist
 (if (eq rayners/which-irc 'erc)
-    (add-to-list 
-     'erc-autojoin-channels-alist 
-     (cons "freenode.net" rayners/freenode-channels)))
+    (setq erc-autojoin-channels-alist `(("freenode.net" ,@rayners/freenode-channels))))
+;    (progn
+;      (setq erc-autojoin-channels-alist '())
+;      (add-to-list
+;       'erc-autojoin-channels-alist 
+;       ((append '("freenode.net") rayners/freenode-channels)))))
 
 (defun rayners/freenode-connect ()
   "Connect to freenode.net"
