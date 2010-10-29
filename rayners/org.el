@@ -17,10 +17,11 @@
 (setq rayners/private-org-files 
       (file-expand-wildcards "~/Dropbox/org/*.org"))
 
+(require 'cl)
 ;; build the list from the shared and private files
 (setq org-agenda-files 
 ;      (append rayners/shared-org-files rayners/private-org-files))
-      rayners/private-org-files)
+      (remove-if 'auto-save-file-name-p rayners/private-org-files))
 
 ;; be a little paranoid about saving org-mode buffers
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
