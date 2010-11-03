@@ -9,6 +9,13 @@
 ; round clock times to 15m increments
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
+(require 'cl)
+(defun rayners/org-files (directory)
+  "Gets the org-mode files for a given directory"
+  (let ((f (directory-files-and-attributes directory t "\.org$")))
+    (remove-if 'file-symlink-p (mapcar 'car f)))) 
+; is this a side effect of using Dropbox? the .#filename symlinks?
+
 ; need to set the list of files
 ; first, shared files
 (setq rayners/shared-org-files 
@@ -17,11 +24,8 @@
 (setq rayners/private-org-files 
       (file-expand-wildcards "~/Dropbox/org/*.org"))
 
-(require 'cl)
 ;; build the list from the shared and private files
-(setq org-agenda-files 
-;      (append rayners/shared-org-files rayners/private-org-files))
-      (remove-if 'auto-save-file-name-p rayners/private-org-files))
+(setq org-agenda-files (rayners/org-files "~/Dropbox/org"))
 
 ;; be a little paranoid about saving org-mode buffers
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
