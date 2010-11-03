@@ -32,3 +32,4 @@
 (vendor 'growl)
 (vendor 'yaml-mode)
 (vendor 'magit)
+(vendor 'rinari)
