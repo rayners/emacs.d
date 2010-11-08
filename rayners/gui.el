@@ -7,10 +7,11 @@
 ; load that spiffy zenburn theme
 (require 'color-theme)
 (require 'zenburn)
+(load "~/.emacs.d/vendor/color-theme-twilight")
 (eval-after-load "color-theme"
                 '(progn
                 (color-theme-initialize)
-                (color-theme-zenburn)))
+                (color-theme-twilight)))
 
 ;; use that fancy font I downloaded
 ;; but only if we're using the GUI
