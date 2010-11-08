@@ -112,3 +112,29 @@
 		      rcirc-default-user-name
 		      rcirc-default-user-full-name
 		      channels))))
+
+;; growl bits for erc
+(require 'growl)
+(defun rayners/growl-erc-hook (match-type nick message)
+  "Basic growl notification when someone says my nick in an irc channel."
+  ; skip if it's the user list
+  (unless (posix-string-match "^\\** Users on #" message)
+    (when (and
+	   (eq match-type 'current-nick)
+	   (not (eq (erc-extract-nick nick) erc-nick))) ; if I didn't say it
+      (growl (concat "<irc> " (buffer-name (current-buffer)))
+	     (concat "<" (erc-extract-nick nick) "> " message) "Colloquy"))))
+
+(add-hook 'erc-text-matched-hook 'rayners/growl-erc-hook)
+
+(defun rayners/growl-erc-private-hook (proc parsed)
+  "Growl notification for private messages"
+  (let ((nick (car (erc-parse-user (erc-response.sender parsed))))
+	(target (car (erc-response.command-args parsed)))
+	(msg (erc-response.contents parsed)))
+    (when (and (erc-current-nick-p target)
+	       (not (erc-is-message-ctcp-and-not-action-p msg)))
+      (growl (concat "<irc> " nick ": ") msg "Colloquy")
+      nil)))
+
+(add-hook 'erc-server-PRIVMSG-functions 'rayners/growl-erc-private-hook)
