@@ -26,14 +26,15 @@
 
 (defvar growl-program "growlnotify")
 
-(defun growl (title message)
-  (start-process "growl" " growl"
-                 growl-program
-                 title
-                 "-a" "Emacs")
-  (process-send-string " growl" message)
-  (process-send-string " growl" "\n")
-  (process-send-eof " growl"))
+(defun growl (title message &optional app-name)
+  (let ((app (if app-name app-name "Emacs")))
+    (start-process "growl" " growl"
+		   growl-program
+		   title
+		   "-a" app)
+    (process-send-string " growl" message)
+    (process-send-string " growl" "\n")
+    (process-send-eof " growl")))
 
 (defun growl-rcirc-print-hook (process sender response target text)
   (when (and (string-match (rcirc-nick process) text)
