@@ -111,5 +111,9 @@
 
 (setq org-refile-use-outline-path 'file)
 
-;; update appt each time agenda opened
-(add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+(if (not noninteractive)
+    (progn
+      ;; update appt each time agenda opened
+      (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+      (org-agenda-to-appt) ;; make sure it's run at least once
+      ))
