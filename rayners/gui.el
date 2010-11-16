@@ -18,3 +18,5 @@
 ;; because this barfs otherwise
 (if (not noninteractive)
     (set-face-font 'default "-apple-DejaVu_Sans_Mono-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
+
+(add-to-list 'default-frame-alist '(width . 120))
