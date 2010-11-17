@@ -3,3 +3,4 @@
 (push "/opt/local/bin" exec-path)
 (push "/usr/local/bin" exec-path)
 
+(add-to-list 'exec-path (expand-file-name "~/perl5/perlbrew/bin"))
