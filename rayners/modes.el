@@ -12,3 +12,6 @@
 ;; yaml files
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 
+;; Markdown
+(vendor 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.\\(markdown\\|md\\)$" . markdown-mode))
