@@ -25,6 +25,8 @@
 (load "rayners/perl")
 (load "rayners/wl")
 
+(load "rayners/snippets")
+
 ;; vendor libs/modes
 (vendor 'org)
 (vendor 'gist)
