@@ -5,7 +5,7 @@
   (tool-bar-mode -1))
 
 ; load that spiffy zenburn theme
-(require 'color-theme)
+(vendor 'color-theme)
 (require 'zenburn)
 (load "~/.emacs.d/vendor/color-theme-twilight")
 (eval-after-load "color-theme"
@@ -19,4 +19,4 @@
 (if (not noninteractive)
     (set-face-font 'default "-apple-DejaVu_Sans_Mono-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 
-(add-to-list 'default-frame-alist '(width . 120))
+;(add-to-list 'default-frame-alist '(width . 120))
