@@ -10,7 +10,7 @@
 ;(setq rayners/which-irc 'rcirc)
 (setq rayners/which-irc 'erc)
 (setq rayners/freenode-channels 
-      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" "#openmelody"))
+      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" "#openmelody" "#zsh"))
 (cond ((eq rayners/which-irc 'rcirc)
        (add-to-list 'rayners/freenode-channels "#rcirc"))
       ((eq rayners/which-irc 'erc)
@@ -86,8 +86,10 @@
 
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 
+;; spelling bits
 (add-hook 'rcirc-mode-hook (lambda ()
 			     (flyspell-mode 1)))
+(erc-spelling-mode 1)
 
 (eval-after-load 'rcirc
   '(defun-rcirc-command reconnect (arg)
