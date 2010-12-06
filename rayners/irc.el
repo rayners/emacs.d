@@ -1,16 +1,22 @@
+; Nick bits
 
 (setq erc-nick "rayners")
 (setq erc-user-full-name "David Raynes")
+(setq rcirc-default-nick "rayners")
+(setq rcirc-default-user-name "rayners")
+(setq rcirc-default-full-name "David Raynes")
 
 ; don't automatically reconnect
 ; it's kind of annoying
 ; plus I might not be back on the VPN
 (setq erc-server-auto-reconnect nil)
 
-;(setq rayners/which-irc 'rcirc)
 (setq rayners/which-irc 'erc)
 (setq rayners/freenode-channels 
-      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" "#openmelody" "#zsh"))
+      '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" 
+	"#openmelody" "#zsh"))
+(setq rayners/perl-channels
+      '("#dbix-class" "#moose"))
 (cond ((eq rayners/which-irc 'rcirc)
        (add-to-list 'rayners/freenode-channels "#rcirc"))
       ((eq rayners/which-irc 'erc)
@@ -21,12 +27,9 @@
 ; channels should be all setup now
 ; erc needs the channels set, by server, it erc-autojoin-channels-alist
 (if (eq rayners/which-irc 'erc)
-    (setq erc-autojoin-channels-alist `(("freenode.net" ,@rayners/freenode-channels))))
-;    (progn
-;      (setq erc-autojoin-channels-alist '())
-;      (add-to-list
-;       'erc-autojoin-channels-alist 
-;       ((append '("freenode.net") rayners/freenode-channels)))))
+    (setq erc-autojoin-channels-alist 
+	  `(("freenode.net" ,@rayners/freenode-channels)
+	    ("perl.org" ,@rayners/perl-channels))))
 
 (defun rayners/freenode-connect ()
   "Connect to freenode.net"
@@ -36,24 +39,22 @@
 			"rayners" "rayners" "David Raynes" 
 			rayners/freenode-channels))
 	((eq rayners/which-irc 'erc)
-	 (erc :server "irc.freenode.net" :port 6667 :nick "rayners" :full-name "David Raynes"
+	 (erc :server "irc.freenode.net" :port 6667 :nick "rayners" 
+	      :full-name "David Raynes"
 ))))
-(global-set-key (kbd "C-c I f") 'rayners/freenode-connect)
-
-(defun djcb-erc-start-or-switch ()
-  "Connect to ERC, or switch to last active buffer"
+(defun rayners/perl-connect ()
+  "Connect to irc.perl.org"
   (interactive)
-  (if (get-buffer "irc.freenode.net:6667") ;; ERC already active?
+  (cond ((eq rayners/which-irc 'rcirc)
+	 (rcirc-connect "irc.perl.org" "6667"
+			"rayners" "rayners" "David Raynes"
+			rayners/perl-channels))
+	((eq rayners/which-irc 'erc)
+	 (erc :server "irc.perl.org" :port 6667 :nick "rayners"
+	      :full-name "David Raynes"))))
 
-    (erc-track-switch-buffer 1) ;; yes: switch to last active
-    (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
-      (erc :server "irc.freenode.net" :port 6667 :nick "rayners" :full-name "David Raynes"))))
-
-;  Need a way to detect VPN being on or something
-;      (erc :server "irc.gimp.org" :port 6667 :nick "foo" :full-name "bar"))))
-
-;; switch to ERC with Ctrl+c e
-(global-set-key (kbd "C-c e") 'djcb-erc-start-or-switch) ;; ERC
+(global-set-key (kbd "C-c I f") 'rayners/freenode-connect)
+(global-set-key (kbd "C-c I p") 'rayners/perl-connect)
 
 ;; Nickserv bits
 
@@ -76,9 +77,6 @@
                                     "324" "329" "332" "333" "353" "477"))
 
 ;; rcirc bits, in case I decide to permanently switch
-(setq rcirc-default-nick "rayners")
-(setq rcirc-default-user-name "rayners")
-(setq rcirc-default-full-name "David Raynes")
 
 (add-hook 'rcirc-mode-hook
 	  (lambda ()
