@@ -10,6 +10,6 @@
 (require 'growl)
 ;; our little façade-function for djcb-popup
 (defun drr-appt-display (min-to-app new-time msg)
-   (growl (format "Appointment in %s minute(s)" min-to-app) msg))
+   (growl (format "Appointment in %s minute(s)" min-to-app) msg "iCal"))
 
 (setq appt-disp-window-function (function drr-appt-display))
