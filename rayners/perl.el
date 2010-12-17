@@ -17,3 +17,16 @@
 
 ; normal perltidy settings
 (setq perltidy-bin "perltidy -q -pbp")
+
+
+;; creating a header-line with the current method
+(defun rayners/current-defun ()
+  (save-excursion
+    (beginning-of-defun)
+
+    (if (looking-at "^sub \\([A-Za-z_0-9]+\\).*")
+	(match-string 1))))
+
+(eval-after-load "cperl-mode"
+  '(add-hook 'cperl-mode-hook (lambda ()
+				(setq header-line-format '(:eval (rayners/current-defun))))))
