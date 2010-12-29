@@ -31,27 +31,22 @@
 	  `(("freenode.net" ,@rayners/freenode-channels)
 	    ("perl.org" ,@rayners/perl-channels))))
 
+(defun rayners/irc-connect (server channels)
+  "Connect to a given irc server"
+  (cond ((eq rayners/which-irc 'rcirc)
+	 (rcirc-connect server "6667" "rayners" "rayners" "David Raynes" channels))
+	((eq rayners/which-irc 'erc)
+	 (erc :server server :port 6667 :nick "rayners" :full-name "David Raynes"))))
+
 (defun rayners/freenode-connect ()
   "Connect to freenode.net"
   (interactive)
-  (cond ((eq rayners/which-irc 'rcirc)
-	 (rcirc-connect "irc.freenode.net" "6667" 
-			"rayners" "rayners" "David Raynes" 
-			rayners/freenode-channels))
-	((eq rayners/which-irc 'erc)
-	 (erc :server "irc.freenode.net" :port 6667 :nick "rayners" 
-	      :full-name "David Raynes"
-))))
+  (rayners/irc-connect "irc.freenode.net" rayners/freenode-channels))
+
 (defun rayners/perl-connect ()
   "Connect to irc.perl.org"
   (interactive)
-  (cond ((eq rayners/which-irc 'rcirc)
-	 (rcirc-connect "irc.perl.org" "6667"
-			"rayners" "rayners" "David Raynes"
-			rayners/perl-channels))
-	((eq rayners/which-irc 'erc)
-	 (erc :server "irc.perl.org" :port 6667 :nick "rayners"
-	      :full-name "David Raynes"))))
+  (rayners/irc-connect "irc.perl.org" rayners/perl-channels))
 
 (global-set-key (kbd "C-c I f") 'rayners/freenode-connect)
 (global-set-key (kbd "C-c I p") 'rayners/perl-connect)
@@ -138,3 +133,19 @@
       nil)))
 
 (add-hook 'erc-server-PRIVMSG-functions 'rayners/growl-erc-private-hook)
+
+;; swiped from http://exal.0x2.org/conf/erc.html
+(defun exal-erc-mode-stuff ()
+  "Set fill column according to `frame-width'."
+  (set (make-local-variable 'erc-fill-column) (- (frame-width) 10))
+  (set (make-local-variable 'erc-timestamp-right-column)
+       (1+ erc-fill-column)))
+(add-hook 'erc-mode-hook 'exal-erc-mode-stuff)
+
+
+(defun rayners/growl-erc-invite-hook (proc parsed)
+  "Growl notification for invitations"
+  (let ((nick (car (erc-parse-user (erc-response.sender parsed)))))
+    (growl (concat "<irc> " nick ": ") "Invitation!" "Colloquy")))
+
+(add-hook 'erc-server-INVITE-functions 'rayners/growl-erc-invite-hook)
