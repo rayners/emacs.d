@@ -15,3 +15,8 @@
     (when (file-exists-p (concat rayners ".el"))
       (load rayners))))
 
+(setq rayners/private-directory (expand-file-name "~/Dropbox/emacs-private"))
+(defun private (library)
+  (load (concat rayners/private-directory "/" (symbol-name library) ".el")))
+
+    
