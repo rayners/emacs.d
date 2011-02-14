@@ -188,3 +188,22 @@
 (global-set-key (kbd "C-c I b") 'rayners/irc-buffer-switch)
 
 (eval-after-load 'rcirc '(require 'rcirc-color))
+
+(defun growl-rcirc-print-hook (process sender response target text)
+  (when (and (string-match (rcirc-nick process) text)
+             (not (string= (rcirc-nick process) sender))
+	     (rcirc-channel-p target)
+             (not (string= (rcirc-server-name process) sender)))
+    (growl (format "IRC Mention: %s in %s" sender target) text "Colloquy")))
+
+(eval-after-load 'rcirc
+  '(add-hook 'rcirc-print-hooks 'growl-rcirc-print-hook))
+
+(defun growl-rcirc-privmsg-hook (process sender response target text)
+  (when (and (string= response "PRIVMSG")
+	     (not (string= sender (rcirc-nick process)))
+	     (not (rcirc-channel-p target)))
+    (growl (format "Private Message from %s" sender) text "Colloquy")))
+
+(eval-after-load 'rcirc
+  '(add-hook 'rcirc-print-hooks 'growl-rcirc-privmsg-hook))

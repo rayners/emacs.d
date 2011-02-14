@@ -36,15 +36,5 @@
     (process-send-string " growl" "\n")
     (process-send-eof " growl")))
 
-(defun growl-rcirc-print-hook (process sender response target text)
-  (when (and (string-match (rcirc-nick process) text)
-             (not (string= (rcirc-nick process) sender))
-             (not (string= (rcirc-server-name process) sender)))
-    (growl "You Were Mentioned"
-           (format "You were mentioned by %s in %s" sender target))))
-
-(eval-after-load 'rcirc
-  '(add-hook 'rcirc-print-hooks 'growl-rcirc-print-hook))
-
 (provide 'growl)
 ;;; growl.el ends here
