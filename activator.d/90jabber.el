@@ -1,6 +1,7 @@
 
 (vendor 'jabber)
 
+(setq jabber-show-offline-contacts nil)
 (setq jabber-account-list
       '(("rayners@gmail.com"
 	 (:network-server . "talk.google.com")
