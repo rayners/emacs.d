@@ -12,7 +12,7 @@
 ;; only use perltidy on my personal laptop
 ;; for now, until I come up with a better way to turn it off
 ;; for certain directories/buffers/etc
-(if (string= "Bruce-Wayne.local" (system-name))
+(if (rayners/my-laptop)
     (eval-after-load "cperl-mode"
       '(add-hook 'cperl-mode-hook 'perltidy-mode)))
 

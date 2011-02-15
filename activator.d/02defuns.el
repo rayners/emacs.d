@@ -20,3 +20,5 @@
   (load (concat rayners/private-directory "/" (symbol-name library) ".el")))
 
     
+(defun rayners/my-laptop ()
+  (string= "Bruce-Wayne.local" (system-name)))
