@@ -118,7 +118,7 @@
        (delete-process process)
        (rcirc-connect server port nick
 		      rcirc-default-user-name
-		      rcirc-default-user-full-name1
+		      rcirc-default-user-full-name
 		      channels))))
 
 ;; growl bits for erc
