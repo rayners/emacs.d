@@ -38,3 +38,6 @@
 
 ;; perl tests
 (add-to-list 'auto-mode-alist '("\\.t$" . perl-mode))
+
+(vendor 'tt-mode)
+(add-to-list 'auto-mode-alist '("\\.tt$" . tt-mode))
