@@ -9,6 +9,9 @@
 ; round clock times to 15m increments
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
+(setq org-clock-persist 'clock)
+(org-clock-persistence-insinuate)
+
 (require 'cl)
 (defun rayners/org-files (directory)
   "Gets the org-mode files for a given directory"
