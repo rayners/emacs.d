@@ -2,3 +2,7 @@ rayners/private.el
 rayners/private
 tramp
 auto-save-list
+
+# I manage this myself,
+# though I suppose I could use a submodule
+vendor/org
