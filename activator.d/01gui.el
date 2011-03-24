@@ -1,10 +1,11 @@
-(load-theme 'wheatgrass) ; this looks spiffy, and it's core!
+;(load-theme 'wheatgrass) ; this looks spiffy, and it's core!
+(load-theme 'tango)
 
 ;; use that fancy font I downloaded
 ;; but only if we're using the GUI
 ;; because this barfs otherwise
 (if (not noninteractive)
-    (set-face-font 'default "-apple-Droid_Sans_Mono-medium-normal-normal-*-10-*-*-*-m-0-iso10646-1"))
+    (set-face-font 'default "-apple-Droid_Sans_Mono-medium-normal-normal-*-11-*-*-*-m-0-iso10646-1"))
 
 (add-to-list 'default-frame-alist '(width . 128))
 (add-to-list 'default-frame-alist '(height . 50))
