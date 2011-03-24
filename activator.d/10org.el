@@ -1,4 +1,5 @@
-(vendor 'org)
+(add-to-list 'el-get-sources 'org-mode)
+;(vendor 'org)
 ;; org-mode fanciness
 
 ; key bindings
@@ -106,10 +107,6 @@
 ;; Diary bits
 (setq org-agenda-include-diary t)
 (setq org-agenda-diary-file "~/Dropbox/org/diary.org")
-
-;; pull ical into diary
-(add-to-list 'org-modules 'org-mac-iCal)
-(setq org-agenda-include-diary t)
 
 ;; refile-y bits
 (setq org-refile-targets 

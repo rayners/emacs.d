@@ -18,7 +18,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 ; so it uses the right subversion/git/etc
-(push "/opt/local/bin" exec-path)
 (push "/usr/local/bin" exec-path)
 
 (add-to-list 'exec-path (expand-file-name "~/perl5/perlbrew/bin"))
@@ -28,3 +27,9 @@
 
 ;; yes or no becomes y or n
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; el-get bits
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(require 'el-get)
+(setq el-get-sources '(el-get))
+
