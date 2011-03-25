@@ -11,12 +11,14 @@
 ; plus I might not be back on the VPN
 (setq erc-server-auto-reconnect nil)
 
-(setq rayners/which-irc 'erc)
+(setq rayners/which-irc 'rcirc)
 (setq rayners/freenode-channels 
       '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" 
 	"#openmelody" "#zsh"))
 (setq rayners/perl-channels
-      '("#dbix-class" "#moose"))
+      '("#dbix-class" "#moose" "#catalyst"))
+(setq rayners/thinstack-channels
+      '("#frogpants"))
 (cond ((eq rayners/which-irc 'rcirc)
        (add-to-list 'rayners/freenode-channels "#rcirc"))
       ((eq rayners/which-irc 'erc)
@@ -105,7 +107,7 @@
        (delete-process process)
        (rcirc-connect server port nick
 		      rcirc-default-user-name
-		      rcirc-default-user-full-name
+		      rcirc-default-user-full-name1
 		      channels))))
 
 ;; growl bits for erc
@@ -142,6 +144,11 @@
        (1+ erc-fill-column)))
 (add-hook 'erc-mode-hook 'exal-erc-mode-stuff)
 
+;; my attempt to port it to rcirc
+(defun exal-rcirc-mode-stuff ()
+  (set (make-local-variable 'rcirc-fill-column) (- (frame-width) 10))
+  )
+(add-hook 'rcirc-mode-hook 'exal-rcirc-mode-stuff)
 
 (defun rayners/growl-erc-invite-hook (proc parsed)
   "Growl notification for invitations"
@@ -149,3 +156,22 @@
     (growl (concat "<irc> " nick ": ") "Invitation!" "Colloquy")))
 
 (add-hook 'erc-server-INVITE-functions 'rayners/growl-erc-invite-hook)
+
+;; buffer switching
+(defun rayners/irc-buffer-switch ()
+  "Switch irc buffers"
+  (interactive)
+  (let ((irc-mode (if (eq rayners/which-irc 'erc) 'erc-mode 'rcirc-mode)))
+    (switch-to-buffer
+     (ido-completing-read "Channel: "
+			  (save-excursion
+			    (delq
+			     nil
+			     (mapcar (lambda (buf)
+				       (when (buffer-live-p buf)
+					 (with-current-buffer buf
+					   (and (eq major-mode irc-mode)
+						(buffer-name buf)))))
+				     (buffer-list))))))))
+
+(global-set-key (kbd "C-c I b") 'rayners/irc-buffer-switch)

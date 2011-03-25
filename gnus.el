@@ -10,3 +10,5 @@
 	 (display . all))))
 (setq gnus-permanently-visible-groups ".*")
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
+(setq mm-text-html-renderer 'gnus-w3m)
