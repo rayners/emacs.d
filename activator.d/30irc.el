@@ -14,7 +14,7 @@
 (setq rayners/which-irc 'rcirc)
 (setq rayners/freenode-channels 
       '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" 
-	"#openmelody" "#zsh"))
+	"#openmelody" "#zsh" "#5by5"))
 (setq rayners/perl-channels
       '("#dbix-class" "#moose" "#catalyst"))
 (setq rayners/thinstack-channels
@@ -118,7 +118,7 @@
        (delete-process process)
        (rcirc-connect server port nick
 		      rcirc-default-user-name
-		      rcirc-default-user-full-name
+		      rcirc-default-full-name
 		      channels))))
 
 ;; growl bits for erc
