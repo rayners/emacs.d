@@ -14,7 +14,7 @@
 (setq rayners/which-irc 'rcirc)
 (setq rayners/freenode-channels 
       '("#git" "#emacs" "#perl" "#movabletype" "#movabletype-talk" 
-	"#openmelody" "#zsh" "#5by5"))
+	"#openmelody" "#zsh" "#5by5" "#el-get"))
 (setq rayners/perl-channels
       '("#dbix-class" "#moose" "#catalyst"))
 (setq rayners/thinstack-channels
