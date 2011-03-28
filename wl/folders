@@ -1,0 +1,36 @@
+#Six-Apart{
+#    %inbox "inbox"
+#    Advance{
+#	%clients/advance/cms-project "cms-project"
+#	%clients/advance/jira "jira"
+#	%clients/advance/confluence "confluence"
+#    }
+#    Lists{
+#	Internal{
+#	    %internal/mt-dev "mt-dev"
+#	    %internal/engineering "engineering"
+#           %internal/platform-products "platform-products"
+#	}
+#	External{
+#	    %external/pronet "pronet"
+#	    %external/mtos-dev "mtos-dev"
+#           %external/buildbot-devel "buildbot-devel"
+#	}
+#    }
+#    %/clients/advance/cms-project:rayners"@"sixapart.com/clear@mail6.sixapart.com:993! "cms-project"
+#    All{
+#	%/
+#    }
+#}
+
+#Gmail{
+#    %inbox:"rayners@gmail.com"/clear@imap.gmail.com:993! "gmail inbox"
+#}
+
+/flag:unread/%[Gmail]/Important "Priority Inbox"
+%inbox "inbox"
+%[Gmail]/Important "Important"
+
+#+trash  "Trash"
+#+draft  "Drafts"
+
