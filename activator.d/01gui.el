@@ -16,6 +16,6 @@
 (setq frame-title-format '("" invocation-name ": "(:eval (if (buffer-file-name)
 							     (abbreviate-file-name (buffer-name))
 							   "%b"))
-			   (:eval (if (tramp-tramp-file-p buffer-file-name)
+			   (:eval (if (and (boundp 'tramp-tramp-file-p) (tramp-tramp-file-p buffer-file-name))
 				      (concat " on " (tramp-file-name-user (tramp-dissect-file-name (buffer-file-name))) "@" (tramp-file-name-host (tramp-dissect-file-name (buffer-file-name))))))
 			   " "(:eval (if (org-clock-is-active) (concat "[ Working: " org-clock-heading " ]")))))
