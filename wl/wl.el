@@ -30,15 +30,36 @@
       wl-smtp-posting-user "rayners"
       wl-smtp-posting-server "smtp.gmail.com"
       wl-local-domain "gmail.com")
-(setq elmo-imap4-default-server "imap.gmail.com")
-(setq elmo-imap4-default-user "rayners@gmail.com") 
-(setq elmo-imap4-default-authenticate-type 'clear)
-(setq elmo-imap4-default-port 993)
-(setq elmo-imap4-default-stream-type 'ssl)
-(setq elmo-imap4-use-modified-utf7 t)
-(setq wl-default-folder "%[Gmail]/Important")
-(setq wl-trash-folder "%[Gmail]/Trash")
-(setq wl-default-spec "%")
+
+;; Gmail IMAP settings
+
+;(setq elmo-imap4-default-server "imap.gmail.com")
+;(setq elmo-imap4-default-user "rayners@gmail.com") 
+;(setq elmo-imap4-default-authenticate-type 'clear)
+;(setq elmo-imap4-default-port 993)
+;(setq elmo-imap4-default-stream-type 'ssl)
+;(setq elmo-imap4-use-modified-utf7 t)
+
+;(setq wl-default-folder "%[Gmail]/Important")
+;(setq wl-trash-folder "%[Gmail]/Trash")
+;(setq wl-default-spec "%")
+
+;; Gmail offlineimap/maildir settings
+
+(setq elmo-maildir-folder-path "~/Gmail")
+(setq elmo-localdir-folder-path "~/Gmail")
+(setq wl-default-folder ".[Gmail].INBOX")
+(setq wl-trash-folder ".[Gmail].Trash")
+(setq wl-draft-folder ".[Gmail].Drafts")
+(setq wl-queue-folder "./tmp/rayners/queue") ;; ??
+(setq wl-default-spec ".")
+(setq wl-folder-hierarchy-access-folders
+      '("^.\\([^/.]+[/.]\\)*[^/.]+\\(:\\|@\\|$\\)"
+    "^-[^.]*\\(:\\|@\\|$\\)"
+    "^@$"
+   "^'$"))
+
+
 (add-hook 'wl-hook 
 	  (lambda ()
 	    (require 'bbdb-wl)
@@ -48,7 +69,10 @@
 	    (setq 
 	     bbdb-wl-folder-regexp    ;; get addresses only from these folders
 	     "^\.inbox$\\|^.sent")    ;;
-	    ))
+	    (require 'mime-w3m)
+	    )
+	  )
+
 
 ;; where deleted messages go
 ;;
@@ -56,7 +80,9 @@
 ;;
 ;;  - Otherwise, the default is just to remove I think?
 ;;
-(setq wl-dispose-folder-alist '(("^%[Gmail]/Important" . 'trash)))
+
+;(setq wl-dispose-folder-alist '(("^%[Gmail]/Important" . 'trash))) ; Gmail IMAP
+(setq wl-dispose-folder-alist '(("\\.[Gmail]\\.Important" . 'trash))) ; Gmail maildir
 
 ;; keep the folder window around
 (setq wl-stay-folder-window t
