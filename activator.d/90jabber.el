@@ -9,6 +9,7 @@
 						       (:connection-type . ssl))))
 					      
 					      (setq jabber-roster-line-format " %c %-25n %u %-8s  %S")
-					      
+					      (setq jabber-history-enabled t)
+					      (setq jabber-use-global-history nil)
 					      (private 'jabber)
 )))
