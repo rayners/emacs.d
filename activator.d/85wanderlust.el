@@ -3,7 +3,9 @@
 (add-to-list 'el-get-sources '(:name wanderlust
 				     :after (lambda ()
 					      (setq wl-init-file (expand-file-name "~/.emacs.d/wl/wl.el"))
-					      (setq wl-folders-file (expand-file-name "~/.emacs.d/wl/folders"))
+					      (if (rayners/my-laptop)
+						  (setq wl-folders-file (expand-file-name "~/.emacs.d/wl/folders"))
+						(setq wl-folders-file (expand-file-name "~/.emacs.d/wl/folders-work")))
 )))
 (add-to-list 'el-get-sources 'apel)
 (add-to-list 'el-get-sources 'flim)
