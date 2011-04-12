@@ -1,7 +1,3 @@
-(setq wl-from "David Raynes <rayners@gmail.com>")
-(setq wl-user-mail-address-list '("rayners@gmail.com"
-				  "rayners@rayners.org"
-				  "rayners@endevver.com"))
 (setq wl-forward-subject-prefix "Fwd: ")
 (setq
  wl-message-ignored-field-list '("^.*:")
@@ -24,12 +20,21 @@
    "^To"
    "^Cc"))
 (setq wl-draft-always-delete-myself t)
-(setq wl-smtp-connection-type 'starttls
-      wl-smtp-posting-port 587
-      wl-smtp-authenticate-type "plain"
-      wl-smtp-posting-user "rayners"
-      wl-smtp-posting-server "smtp.gmail.com"
-      wl-local-domain "gmail.com")
+
+(if (not (rayners/my-laptop)) (private 'wanderlust)
+  (progn
+
+    (setq wl-from "David Raynes <rayners@gmail.com>")
+    (setq wl-user-mail-address-list '("rayners@gmail.com"
+				      "rayners@rayners.org"
+				      "rayners@endevver.com"))
+
+    (setq wl-smtp-connection-type 'starttls
+	  wl-smtp-posting-port 587
+	  wl-smtp-authenticate-type "plain"
+	  wl-smtp-posting-user "rayners"
+	  wl-smtp-posting-server "smtp.gmail.com"
+	  wl-local-domain "gmail.com")
 
 ;; Gmail IMAP settings
 
@@ -46,11 +51,12 @@
 
 ;; Gmail offlineimap/maildir settings
 
-(setq elmo-maildir-folder-path "~/Gmail")
-(setq elmo-localdir-folder-path "~/Gmail")
-(setq wl-default-folder ".[Gmail].INBOX")
-(setq wl-trash-folder ".[Gmail].Trash")
-(setq wl-draft-folder ".[Gmail].Drafts")
+    (setq elmo-maildir-folder-path "~/Gmail")
+    (setq elmo-localdir-folder-path "~/Gmail")
+    (setq wl-default-folder ".[Gmail].INBOX")
+    (setq wl-trash-folder ".[Gmail].Trash")
+    (setq wl-draft-folder ".[Gmail].Drafts")))
+
 (setq wl-queue-folder "./tmp/rayners/queue") ;; ??
 (setq wl-default-spec ".")
 (setq wl-folder-hierarchy-access-folders
@@ -87,3 +93,6 @@
 ;; keep the folder window around
 (setq wl-stay-folder-window t
       wl-folder-window-width 40)
+
+(setq wl-icon-directory (expand-file-name "~/.emacs.d/el-get/wanderlust/icons/"))
+(add-to-list 'wl-summary-sort-specs 'rdate)
