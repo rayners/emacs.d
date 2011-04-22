@@ -10,7 +10,7 @@
 ; round clock times to 15m increments
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
-(setq org-clock-persist 'clock)
+(setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
 (require 'cl)
