@@ -10,7 +10,8 @@
 ; round clock times to 15m increments
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
-(setq org-clock-persist 'history)
+(setq org-clock-persist-file "~/Dropbox/org/org-clock-save.el")
+(setq org-clock-persist t)
 (org-clock-persistence-insinuate)
 
 (require 'cl)
