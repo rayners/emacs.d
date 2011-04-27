@@ -7,3 +7,5 @@ auto-save-list
 # though I suppose I could use a submodule
 vendor/org
 el-get
+ac-comphist.dat
+elpa
