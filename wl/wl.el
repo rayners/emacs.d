@@ -96,3 +96,14 @@
 
 (setq wl-icon-directory (expand-file-name "~/.emacs.d/el-get/wanderlust/icons/"))
 (add-to-list 'wl-summary-sort-specs 'rdate)
+
+;; mu bits from http://emacs-fu.blogspot.com/2011/03/searching-e-mails-with-wanderlust-and.html
+(require 'elmo-search)
+(elmo-search-register-engine
+    'mu 'local-file
+    :prog "/usr/local/bin/mu" ;; or wherever you've installed it
+    :args '("find" pattern "--fields" "l") :charset 'utf-8)
+
+(setq elmo-search-default-engine 'mu)
+;; for when you type "g" in folder or summary.
+(setq wl-default-spec "[")
