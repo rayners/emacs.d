@@ -18,4 +18,10 @@
 							   "%b"))
 			   (:eval (if (and (boundp 'tramp-tramp-file-p) (tramp-tramp-file-p buffer-file-name))
 				      (concat " on " (tramp-file-name-user (tramp-dissect-file-name (buffer-file-name))) "@" (tramp-file-name-host (tramp-dissect-file-name (buffer-file-name))))))
-			   " "(:eval (if (org-clock-is-active) (concat "[ Working: " org-clock-heading " ]")))))
+			   " "
+			   (:eval (if (org-clock-is-active) (concat "[ Working: " org-clock-heading " ]")))
+			   " "
+			   (:eval (if (and *jabber-connected* (not (string= "" *jabber-current-show*)))
+				      (concat "[ "  *jabber-current-show* ": " *jabber-current-status* " ]")))
+			   ))
+
