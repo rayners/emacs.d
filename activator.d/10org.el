@@ -33,7 +33,9 @@
 (setq org-agenda-files (rayners/org-files "~/Dropbox/org"))
 
 ;; be a little paranoid about saving org-mode buffers
-(run-at-time "00:59" 3600 'org-save-all-org-buffers)
+;; by saving all the org mode buffers *NOW*
+;; and again every 15m
+(run-at-time nil 900 'org-save-all-org-buffers)
 
 ;; swiped, then edited from http://doc.norang.ca/org-mode.html
 (setq org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
