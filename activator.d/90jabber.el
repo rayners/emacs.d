@@ -14,4 +14,7 @@
 					      (setq jabber-history-enabled t)
 					      (setq jabber-use-global-history nil)
 					      (private 'jabber)
+
+					      (add-hook 'jabber-chat-mode-hook (lambda ()
+										 (setq fill-column (- (frame-width) 10))))
 )))
