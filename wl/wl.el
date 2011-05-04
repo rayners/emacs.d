@@ -107,3 +107,5 @@
 (setq elmo-search-default-engine 'mu)
 ;; for when you type "g" in folder or summary.
 (setq wl-default-spec "[")
+
+(setq wl-biff-check-folder-list '(".INBOX" ".[Gmail].Important"))
