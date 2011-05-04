@@ -125,3 +125,20 @@
       (org-agenda-to-appt) ;; make sure it's run at least once
       ))
 
+
+(setq org-agenda-ndays 1)
+(add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1)))
+
+;; more keyboardy bits
+(global-set-key (kbd "<f10> i") 'rayners/clock-in)
+(global-set-key (kbd "<f10> o") 'rayners/clock-out)
+(defun rayners/clock-in ()
+  "Clock in, just like it says"
+  (interactive)
+  (org-clock-in t)) ;; clock in with prefix, so as to select
+
+(defun rayners/clock-out ()
+  "Clock out"
+  (interactive)
+  (when (org-clock-is-active)
+    (org-clock-out)))
