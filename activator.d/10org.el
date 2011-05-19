@@ -145,3 +145,5 @@
     (org-clock-out)))
 
 (setq org-clock-history-length 30) ; it's plenty, but there are two jobs
+
+(private 'org)
