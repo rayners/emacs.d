@@ -1,5 +1,5 @@
-(add-to-list 'el-get-sources 'org-mode)
-;(vendor 'org)
+(add-to-list 'el-get-sources '(:name org-mode
+:after (lambda ()
 ;; org-mode fanciness
 
 ; key bindings
@@ -142,3 +142,4 @@
   (interactive)
   (when (org-clock-is-active)
     (org-clock-out)))
+)))
