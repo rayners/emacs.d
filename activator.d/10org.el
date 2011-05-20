@@ -132,6 +132,7 @@
 ;; more keyboardy bits
 (global-set-key (kbd "<f7> i") 'rayners/clock-in)
 (global-set-key (kbd "<f7> o") 'rayners/clock-out)
+(global-set-key (kbd "<f7> g") 'org-clock-goto)
 (defun rayners/clock-in ()
   "Clock in, just like it says"
   (interactive)
@@ -142,4 +143,8 @@
   (interactive)
   (when (org-clock-is-active)
     (org-clock-out)))
+
+(setq org-clock-history-length 30) ; it's plenty, but there are two jobs
+
+(private 'org)
 )))
