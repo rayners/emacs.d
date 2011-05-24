@@ -21,7 +21,9 @@
 			   " "
 			   (:eval (if (org-clock-is-active) (concat "[ Working: " org-clock-heading " ]")))
 			   " "
-			   (:eval (if (and *jabber-connected* (not (string= "" *jabber-current-show*)))
+			   (:eval (if (and (and (boundp *jabber-connected*) 
+						*jabber-connected*)
+					   (not (string= "" *jabber-current-show*)))
 				      (concat "[ "  *jabber-current-show* ": " *jabber-current-status* " ]")))
 			   ))
 
