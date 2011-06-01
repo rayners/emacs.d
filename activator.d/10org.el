@@ -11,6 +11,7 @@
 (setq org-time-stamp-rounding-minutes (quote (1 15)))
 
 (setq org-clock-persist-file "~/Dropbox/org/org-clock-save.el")
+(setq org-clock-history-length 30) ; it's plenty, but there are two jobs
 (setq org-clock-persist t)
 (org-clock-persistence-insinuate)
 
@@ -72,10 +73,12 @@
 	 "* %? %^t")
 	))
 
-(setq org-tag-alist '(("PHONE" . ?P) 
+(setq org-tag-alist '(("PHONE" . ?P)
+		      ("EMAIL" . ?E)
 		      ("REFILE" . ?R)
 		      ("GROCERIES" . ?G)))
 (setq org-tag-faces '(("PHONE" :foreground "blue" :weight bold)
+		      ("EMAIL" :foreground "yellow" :weight bold)
 		      ("REFILE" :foreground "red" :weight bold)
 		      ("GROCERIES" :foreground "green" :weight bold)))
 
@@ -83,6 +86,9 @@
       '(
 	("p" "Phone Calls" tags-todo "PHONE"
 	 ((org-agenda-overriding-header "Phone Calls"))
+	 )
+	("E" "Emails" tags-todo "EMAIL"
+	 ((org-agenda-overriding-header "Emails to Send"))
 	 )
 	("r" "Items to refile" tags "REFILE" ;; tags means include done items
 	 ((org-agenda-overriding-header "Items to Refile"))
@@ -144,7 +150,6 @@
   (when (org-clock-is-active)
     (org-clock-out)))
 
-(setq org-clock-history-length 30) ; it's plenty, but there are two jobs
-
+(setq org-id-locations-file (convert-standard-filename "~/Dropbox/org/org-id-locations"))
 (private 'org)
 )))
