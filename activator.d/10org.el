@@ -31,7 +31,7 @@
       (file-expand-wildcards "~/Dropbox/org/*.org"))
 
 ;; build the list from the shared and private files
-(setq org-agenda-files (rayners/org-files "~/Dropbox/org"))
+(setq org-agenda-files '("~/Dropbox/org"))
 
 ;; be a little paranoid about saving org-mode buffers
 ;; by saving all the org mode buffers *NOW*
