@@ -1,4 +1,6 @@
 (add-to-list 'el-get-sources '(:name org-mode
+:compile nil
+:load-path nil
 :after (lambda ()
 ;; org-mode fanciness
 
