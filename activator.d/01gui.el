@@ -27,3 +27,6 @@
 				      (concat "[ "  *jabber-current-show* ": " *jabber-current-status* " ]")))
 			   ))
 
+(add-to-list 'el-get-sources '(:name color-theme-solarized))
+(add-to-list 'el-get-sources '(:name color-theme-railscasts))
+(add-to-list 'el-get-sources '(:name color-theme :load "color-theme-6.6.0/color-theme.el" :load-path ("./color-theme-6.6.0")))
