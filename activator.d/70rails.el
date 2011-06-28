@@ -1,0 +1,5 @@
+(add-to-list 'el-get-sources '(:name rinari))
+(add-to-list 'el-get-sources '(:name coffee-mode))
+(add-to-list 'el-get-sources '(:name sass-mode))
+(add-to-list 'el-get-sources '(:name haml-mode))
+(add-to-list 'el-get-sources '(:name ruby-mode))
